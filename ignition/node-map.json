@@ -1,0 +1,15 @@
+{
+  "Cmd_CB_Close": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Cmd_CB_Close",
+  "Cmd_CB_Open": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Cmd_CB_Open",
+  "Mode_Remote": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Mode_Remote",
+  "Out_CB_Close": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Out_CB_Close",
+  "Out_CB_Open": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Out_CB_Open",
+  "Perm_CB_Close": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Perm_CB_Close",
+  "Sts_BusDS_Closed": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_BusDS_Closed",
+  "Sts_CB_Open": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_CB_Open",
+  "Sts_DC_Healthy": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_DC_Healthy",
+  "Sts_GroundDS_Open": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_GroundDS_Open",
+  "Sts_LineDS_Closed": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_LineDS_Closed",
+  "Sts_Lockout86": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_Lockout86",
+  "Sts_Protection_Healthy": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.Sts_Protection_Healthy"
+}

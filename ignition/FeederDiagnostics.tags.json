@@ -1,0 +1,45 @@
+{
+  "tags": [
+    {
+      "name": "FeederDiagnostics",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "LastChangeMs",
+          "tagType": "AtomicTag",
+          "valueSource": "memory",
+          "dataType": "Int8",
+          "value": 0,
+          "documentation": "Gateway-only heartbeat receipt time; zero requires a fresh good-to-good counter change."
+        },
+        {
+          "name": "Counter",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "dataType": "Int8",
+          "opcServer": "CODESYS_Local",
+          "opcItemPath": "nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.Heartbeat.Counter",
+          "readOnly": true,
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "    target = \"[default]FeederDiagnostics/LastChangeMs\"\n    if initialChange or not currentValue.quality.isGood() or not previousValue.quality.isGood():\n        system.tag.writeBlocking([target], [0])\n    elif currentValue.value != previousValue.value:\n        system.tag.writeBlocking([target], [system.date.toMillis(system.date.now())])\n"
+            },
+            {
+              "eventid": "qualityChanged",
+              "script": "    system.tag.writeBlocking([\"[default]FeederDiagnostics/LastChangeMs\"], [0])\n"
+            }
+          ]
+        },
+        {
+          "name": "State",
+          "tagType": "AtomicTag",
+          "valueSource": "expr",
+          "dataType": "String",
+          "expression": "forceQuality(if(!isGood({[.]Counter}), \"UNAVAILABLE\",\nif(!isGood({[.]LastChangeMs}) || {[.]LastChangeMs} <= 0, \"WAITING\",\nif(toMillis(now(1000)) - {[.]LastChangeMs} < 0 || toMillis(now(1000)) - {[.]LastChangeMs} > 5000,\n\"STALE\", \"ACTIVE\"))))",
+          "documentation": "ACTIVE means a changing PLC-task counter observed within 5 s; not a safety permissive."
+        }
+      ]
+    }
+  ]
+}

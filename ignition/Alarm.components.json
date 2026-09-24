@@ -1,0 +1,61 @@
+[
+  {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+      "text": "OPEN FEEDBACK MONITOR",
+      "style": {
+        "fontSize": 18,
+        "paddingLeft": 12,
+        "borderRadius": 4
+      }
+    },
+    "meta": {
+      "name": "OpenFeedbackAlarm"
+    },
+    "position": {
+      "x": 16,
+      "y": 676,
+      "width": 680,
+      "height": 44
+    },
+    "propConfig": {
+      "props.text": {
+        "binding": {
+          "type": "expr",
+          "config": {
+            "expression": "forceQuality(if(isGood({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}) && isGood({[default]FeederDiagnostics/State}) && {[default]FeederDiagnostics/State} = \"ACTIVE\" && isGood({[default]Feeder01/Out_CB_Open}) && isGood({[default]Feeder01/Sts_CB_Open}), if({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}, \"ALARM: OPEN FEEDBACK MISSING\", if({[default]FeederMonitoring/OpenPending}, \"OPEN FEEDBACK: WAITING (5 s delay)\", \"OPEN FEEDBACK: NO ACTIVE ALARM\")), \"OPEN FEEDBACK: MONITORING UNAVAILABLE\"))"
+          }
+        }
+      },
+      "props.style.backgroundColor": {
+        "binding": {
+          "type": "expr",
+          "config": {
+            "expression": "forceQuality(if(isGood({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}) && isGood({[default]FeederDiagnostics/State}) && {[default]FeederDiagnostics/State} = \"ACTIVE\" && isGood({[default]Feeder01/Out_CB_Open}) && isGood({[default]Feeder01/Sts_CB_Open}), if({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}, \"#fee2e2\", \"#e2e8f0\"), \"#fef3c7\"))"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+      "text": "Lab alarm: sustained open output without open feedback. No active alarm does not confirm position.",
+      "style": {
+        "fontSize": 12,
+        "paddingLeft": 12
+      }
+    },
+    "meta": {
+      "name": "AlarmScope"
+    },
+    "position": {
+      "x": 16,
+      "y": 726,
+      "width": 680,
+      "height": 48
+    }
+  }
+]

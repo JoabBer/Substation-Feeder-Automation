@@ -1,0 +1,576 @@
+[
+  {
+    "type": "ia.container.coord",
+    "version": 0,
+    "props": {
+      "style": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "meta": {
+      "name": "FeederStatus"
+    },
+    "position": {
+      "x": 0,
+      "y": 0,
+      "width": 712,
+      "height": 610
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "FEEDER 01  |  OPERATOR OVERVIEW",
+          "style": {
+            "fontSize": 24,
+            "color": "#152536",
+            "backgroundColor": "#dbeafe",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "x": 16,
+          "y": 12,
+          "width": 680,
+          "height": 40
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "SOFTWARE PLC LAB  /  READ ONLY  /  SIMULATED FEEDBACK",
+          "style": {
+            "fontSize": 12,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Scope"
+        },
+        "position": {
+          "x": 16,
+          "y": 57,
+          "width": 680,
+          "height": 28
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "CHECKING TAG QUALITY",
+          "style": {
+            "fontSize": 16,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "DataQuality"
+        },
+        "position": {
+          "x": 16,
+          "y": 93,
+          "width": 680,
+          "height": 34
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_CB_Open}) && isGood({[default]Feeder01/Perm_CB_Close}) && isGood({[default]Feeder01/Mode_Remote}) && isGood({[default]Feeder01/Sts_DC_Healthy}) && isGood({[default]Feeder01/Sts_Protection_Healthy}) && isGood({[default]Feeder01/Sts_Lockout86}) && isGood({[default]Feeder01/Sts_BusDS_Closed}) && isGood({[default]Feeder01/Sts_LineDS_Closed}) && isGood({[default]Feeder01/Sts_GroundDS_Open}) && isGood({[default]Feeder01/Cmd_CB_Close}) && isGood({[default]Feeder01/Cmd_CB_Open}) && isGood({[default]Feeder01/Out_CB_Close}) && isGood({[default]Feeder01/Out_CB_Open}), \"DATA QUALITY: ALL 13 TAGS GOOD\", \"DATA QUALITY: DEGRADED / CHECK UNKNOWN SIGNALS\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_CB_Open"
+        },
+        "position": {
+          "x": 16,
+          "y": 139,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_CB_Open}), \"Breaker feedback:  \" + if({[default]Feeder01/Sts_CB_Open}, \"OPEN INDICATED\", \"NOT OPEN / UNCONFIRMED\"), \"Breaker feedback:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Perm_CB_Close"
+        },
+        "position": {
+          "x": 16,
+          "y": 169,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Perm_CB_Close}), \"Close permissive:  \" + if({[default]Feeder01/Perm_CB_Close}, \"ALLOWED\", \"BLOCKED\"), \"Close permissive:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Mode_Remote"
+        },
+        "position": {
+          "x": 16,
+          "y": 199,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Mode_Remote}), \"Control mode:  \" + if({[default]Feeder01/Mode_Remote}, \"REMOTE\", \"LOCAL\"), \"Control mode:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_DC_Healthy"
+        },
+        "position": {
+          "x": 16,
+          "y": 229,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_DC_Healthy}), \"DC supply:  \" + if({[default]Feeder01/Sts_DC_Healthy}, \"HEALTHY\", \"NOT HEALTHY\"), \"DC supply:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_Protection_Healthy"
+        },
+        "position": {
+          "x": 16,
+          "y": 259,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_Protection_Healthy}), \"Protection:  \" + if({[default]Feeder01/Sts_Protection_Healthy}, \"HEALTHY\", \"NOT HEALTHY\"), \"Protection:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_Lockout86"
+        },
+        "position": {
+          "x": 16,
+          "y": 289,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_Lockout86}), \"Lockout 86:  \" + if({[default]Feeder01/Sts_Lockout86}, \"ACTIVE\", \"CLEAR\"), \"Lockout 86:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_BusDS_Closed"
+        },
+        "position": {
+          "x": 16,
+          "y": 319,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_BusDS_Closed}), \"Bus disconnect:  \" + if({[default]Feeder01/Sts_BusDS_Closed}, \"CLOSED INDICATED\", \"NOT CLOSED\"), \"Bus disconnect:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_LineDS_Closed"
+        },
+        "position": {
+          "x": 16,
+          "y": 349,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_LineDS_Closed}), \"Line disconnect:  \" + if({[default]Feeder01/Sts_LineDS_Closed}, \"CLOSED INDICATED\", \"NOT CLOSED\"), \"Line disconnect:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Sts_GroundDS_Open"
+        },
+        "position": {
+          "x": 16,
+          "y": 379,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_GroundDS_Open}), \"Ground disconnect:  \" + if({[default]Feeder01/Sts_GroundDS_Open}, \"OPEN INDICATED\", \"NOT OPEN\"), \"Ground disconnect:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Cmd_CB_Close"
+        },
+        "position": {
+          "x": 16,
+          "y": 409,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Cmd_CB_Close}), \"Close request:  \" + if({[default]Feeder01/Cmd_CB_Close}, \"ON\", \"OFF\"), \"Close request:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Cmd_CB_Open"
+        },
+        "position": {
+          "x": 16,
+          "y": 439,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Cmd_CB_Open}), \"Open request:  \" + if({[default]Feeder01/Cmd_CB_Open}, \"ON\", \"OFF\"), \"Open request:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Out_CB_Close"
+        },
+        "position": {
+          "x": 16,
+          "y": 469,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Out_CB_Close}), \"Close output:  \" + if({[default]Feeder01/Out_CB_Close}, \"ON\", \"OFF\"), \"Close output:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "UNKNOWN",
+          "style": {
+            "fontSize": 14,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "Out_CB_Open"
+        },
+        "position": {
+          "x": 16,
+          "y": 499,
+          "width": 680,
+          "height": 27
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]Feeder01/Out_CB_Open}), \"Open output:  \" + if({[default]Feeder01/Out_CB_Open}, \"ON\", \"OFF\"), \"Open output:  UNKNOWN\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "Open feedback FALSE does not independently prove CLOSED.",
+          "style": {
+            "fontSize": 12,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "FeedbackNote"
+        },
+        "position": {
+          "x": 16,
+          "y": 541,
+          "width": 680,
+          "height": 25
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "An output is a command. Feedback reports breaker position.",
+          "style": {
+            "fontSize": 12,
+            "color": "#152536",
+            "backgroundColor": "#f1f5f9",
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "CommandNote"
+        },
+        "position": {
+          "x": 16,
+          "y": 571,
+          "width": 680,
+          "height": 25
+        }
+      }
+    ]
+  }
+]

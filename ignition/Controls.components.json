@@ -1,0 +1,153 @@
+[
+  {
+    "type": "ia.container.coord",
+    "version": 0,
+    "meta": {
+      "name": "BreakerControls"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "#e2e8f0",
+        "borderRadius": 6
+      }
+    },
+    "custom": {
+      "result": "Ready. Sign in to issue commands."
+    },
+    "position": {
+      "x": 16,
+      "y": 790,
+      "width": 680,
+      "height": 220
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "meta": {
+          "name": "Heading"
+        },
+        "props": {
+          "text": "LAB BREAKER CONTROLS",
+          "style": {
+            "fontSize": 15
+          }
+        },
+        "position": {
+          "x": 12,
+          "y": 8,
+          "width": 650,
+          "height": 34
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "version": 0,
+        "meta": {
+          "name": "OpenButton"
+        },
+        "custom": {
+          "command": "Open"
+        },
+        "props": {
+          "text": "Request OPEN"
+        },
+        "position": {
+          "x": 12,
+          "y": 48,
+          "width": 200,
+          "height": 44
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "    # Perspective onActionPerformed body; build_controls.py indents this file.\n    # LAB ONLY. No physical breaker I/O is connected.\n    from java.util.concurrent.locks import ReentrantLock\n    import time\n\n    panel = self.parent\n    action = self.custom.command\n    if action not in ('Open', 'Close'):\n        return\n    if not self.session.props.auth.authenticated:\n        panel.custom.result = 'Sign in before issuing a command.'\n        return\n\n    # Gateway-wide serialization, shared by both buttons and all sessions.\n    lock = system.util.getGlobals().setdefault('FeederLab.CommandLock', ReentrantLock())\n    if not lock.tryLock():\n        panel.custom.result = 'Another command is active. Wait for it to finish.'\n        return\n    server = 'CODESYS_Local'\n    prefix = 'nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.'\n    node = prefix + 'Cmd_CB_' + action\n    started = False\n    try:\n        names = ['Cmd_CB_Open', 'Cmd_CB_Close', 'Mode_Remote', 'Sts_DC_Healthy',\n                 'Sts_CB_Open', 'Perm_CB_Close']\n        values = system.tag.readBlocking(['[default]Feeder01/' + n for n in names] +\n                                        ['[default]FeederDiagnostics/State'])\n        if not all(q.quality.isGood() for q in values) or str(values[-1].value) != 'ACTIVE':\n            panel.custom.result = 'Command blocked: PLC monitoring unavailable.'\n            return\n        state = dict(zip(names, [bool(q.value) for q in values[:-1]]))\n        if state['Cmd_CB_Open'] or state['Cmd_CB_Close']:\n            panel.custom.result = 'Command blocked: an existing request is active.'\n            return\n        allowed = state['Perm_CB_Close'] if action == 'Close' else (\n            state['Mode_Remote'] and state['Sts_DC_Healthy'] and not state['Sts_CB_Open'])\n        if not allowed:\n            panel.custom.result = action + ' blocked by PLC conditions.'\n            return\n        # Set before attempting the write so an uncertain write is still cleaned up.\n        started = True\n        quality = system.opc.writeValue(server, node, True)\n        if not quality.isGood():\n            raise Exception('PLC command write failed: ' + str(quality))\n        panel.custom.result = action + ' requested. Waiting for indication; request clears within 6 s.'\n        # This Gateway event continues if the browser disconnects. PLC has a 7 s cap.\n        time.sleep(6.0)\n        panel.custom.result = action + ' request ended. Check the breaker indication.'\n    except Exception as exc:\n        panel.custom.result = 'Command error: ' + str(exc)\n        system.util.getLogger('FeederLabCommands').error(str(exc))\n    finally:\n        try:\n            if started:\n                quality = system.opc.writeValue(server, node, False)\n                if not quality.isGood():\n                    panel.custom.result = 'Command reset not confirmed. PLC timeout is the fallback.'\n        finally:\n            lock.unlock()\n"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "version": 0,
+        "meta": {
+          "name": "CloseButton"
+        },
+        "custom": {
+          "command": "Close"
+        },
+        "props": {
+          "text": "Request CLOSE"
+        },
+        "position": {
+          "x": 232,
+          "y": 48,
+          "width": 200,
+          "height": 44
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "    # Perspective onActionPerformed body; build_controls.py indents this file.\n    # LAB ONLY. No physical breaker I/O is connected.\n    from java.util.concurrent.locks import ReentrantLock\n    import time\n\n    panel = self.parent\n    action = self.custom.command\n    if action not in ('Open', 'Close'):\n        return\n    if not self.session.props.auth.authenticated:\n        panel.custom.result = 'Sign in before issuing a command.'\n        return\n\n    # Gateway-wide serialization, shared by both buttons and all sessions.\n    lock = system.util.getGlobals().setdefault('FeederLab.CommandLock', ReentrantLock())\n    if not lock.tryLock():\n        panel.custom.result = 'Another command is active. Wait for it to finish.'\n        return\n    server = 'CODESYS_Local'\n    prefix = 'nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.'\n    node = prefix + 'Cmd_CB_' + action\n    started = False\n    try:\n        names = ['Cmd_CB_Open', 'Cmd_CB_Close', 'Mode_Remote', 'Sts_DC_Healthy',\n                 'Sts_CB_Open', 'Perm_CB_Close']\n        values = system.tag.readBlocking(['[default]Feeder01/' + n for n in names] +\n                                        ['[default]FeederDiagnostics/State'])\n        if not all(q.quality.isGood() for q in values) or str(values[-1].value) != 'ACTIVE':\n            panel.custom.result = 'Command blocked: PLC monitoring unavailable.'\n            return\n        state = dict(zip(names, [bool(q.value) for q in values[:-1]]))\n        if state['Cmd_CB_Open'] or state['Cmd_CB_Close']:\n            panel.custom.result = 'Command blocked: an existing request is active.'\n            return\n        allowed = state['Perm_CB_Close'] if action == 'Close' else (\n            state['Mode_Remote'] and state['Sts_DC_Healthy'] and not state['Sts_CB_Open'])\n        if not allowed:\n            panel.custom.result = action + ' blocked by PLC conditions.'\n            return\n        # Set before attempting the write so an uncertain write is still cleaned up.\n        started = True\n        quality = system.opc.writeValue(server, node, True)\n        if not quality.isGood():\n            raise Exception('PLC command write failed: ' + str(quality))\n        panel.custom.result = action + ' requested. Waiting for indication; request clears within 6 s.'\n        # This Gateway event continues if the browser disconnects. PLC has a 7 s cap.\n        time.sleep(6.0)\n        panel.custom.result = action + ' request ended. Check the breaker indication.'\n    except Exception as exc:\n        panel.custom.result = 'Command error: ' + str(exc)\n        system.util.getLogger('FeederLabCommands').error(str(exc))\n    finally:\n        try:\n            if started:\n                quality = system.opc.writeValue(server, node, False)\n                if not quality.isGood():\n                    panel.custom.result = 'Command reset not confirmed. PLC timeout is the fallback.'\n        finally:\n            lock.unlock()\n"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "meta": {
+          "name": "Result"
+        },
+        "props": {
+          "text": "Ready. Sign in to issue commands.",
+          "style": {
+            "fontSize": 15
+          }
+        },
+        "position": {
+          "x": 12,
+          "y": 104,
+          "width": 650,
+          "height": 50
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "property",
+              "config": {
+                "path": "parent.custom.result"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "meta": {
+          "name": "Scope"
+        },
+        "props": {
+          "text": "Simulation only. Requests expire; feedback is manually simulated.",
+          "style": {
+            "fontSize": 15
+          }
+        },
+        "position": {
+          "x": 12,
+          "y": 162,
+          "width": 650,
+          "height": 40
+        }
+      }
+    ]
+  }
+]

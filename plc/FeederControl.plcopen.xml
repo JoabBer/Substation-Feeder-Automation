@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP22 Patch 3" creationDateTime="2026-09-24T12:18:53.7208919" />
+  <contentHeader name="Substation_Feeder_Automation_Controls.project" modificationDateTime="2026-09-24T11:11:14.0125883">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="PLC_PRG" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Mode_Remote">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_DC_Healthy">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_Protection_Healthy">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_CB_Open">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_BusDS_Closed">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_LineDS_Closed">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_GroundDS_Open">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Sts_Lockout86">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Perm_CB_Close">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="read" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Out_CB_Close">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="read" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Out_CB_Open">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="read" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+                <InterfaceAsPlainText>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM PLC_PRG
+VAR
+
+
+
+    {attribute 'symbol' := 'readwrite'}
+    Mode_Remote             : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_DC_Healthy          : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_Protection_Healthy  : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_CB_Open             : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_BusDS_Closed        : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_LineDS_Closed       : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_GroundDS_Open       : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_Lockout86           : BOOL := FALSE;
+
+    {attribute 'symbol' := 'read'}
+    Perm_CB_Close           : BOOL := FALSE;
+    {attribute 'symbol' := 'read'}
+    Out_CB_Close            : BOOL := FALSE;
+    {attribute 'symbol' := 'read'}
+    Out_CB_Open             : BOOL := FALSE;
+END_VAR
+VAR_INPUT
+    {attribute 'symbol' := 'readwrite'}
+	Cmd_CB_Close            : BOOL := FALSE;
+    {attribute 'symbol' := 'readwrite'}
+    Cmd_CB_Open             : BOOL := FALSE;
+END_VAR
+</xhtml>
+                </InterfaceAsPlainText>
+              </data>
+            </addData>
+          </localVars>
+          <inputVars>
+            <variable name="Cmd_CB_Close">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="Cmd_CB_Open">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="readwrite" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+                <InterfaceAsPlainText>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM PLC_PRG
+VAR
+
+
+
+    {attribute 'symbol' := 'readwrite'}
+    Mode_Remote             : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_DC_Healthy          : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_Protection_Healthy  : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_CB_Open             : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_BusDS_Closed        : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_LineDS_Closed       : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_GroundDS_Open       : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_Lockout86           : BOOL := FALSE;
+
+    {attribute 'symbol' := 'read'}
+    Perm_CB_Close           : BOOL := FALSE;
+    {attribute 'symbol' := 'read'}
+    Out_CB_Close            : BOOL := FALSE;
+    {attribute 'symbol' := 'read'}
+    Out_CB_Open             : BOOL := FALSE;
+END_VAR
+VAR_INPUT
+    {attribute 'symbol' := 'readwrite'}
+	Cmd_CB_Close            : BOOL := FALSE;
+    {attribute 'symbol' := 'readwrite'}
+    Cmd_CB_Open             : BOOL := FALSE;
+END_VAR
+</xhtml>
+                </InterfaceAsPlainText>
+              </data>
+            </addData>
+          </inputVars>
+        </interface>
+        <body>
+          <LD>
+            <!--ObjectVersion: LD2-->
+            <leftPowerRail localId="0">
+              <position x="0" y="0" />
+              <connectionPointOut formalParameter="none" />
+            </leftPowerRail>
+            <comment localId="3" height="0" width="0">
+              <position x="0" y="0" />
+              <content>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Close permissive: all isolator, protection, DC and remote-mode conditions healthy; no 86 lockout.</xhtml>
+              </content>
+            </comment>
+            <vendorElement localId="2">
+              <position x="0" y="0" />
+              <alternativeText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </alternativeText>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                  <ElementType xmlns="">networktitle</ElementType>
+                </data>
+              </addData>
+            </vendorElement>
+            <contact localId="4">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="0" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Mode_Remote</variable>
+            </contact>
+            <contact localId="5">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="4" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_DC_Healthy</variable>
+            </contact>
+            <contact localId="6">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="5" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_Protection_Healthy</variable>
+            </contact>
+            <contact localId="7">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="6" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_CB_Open</variable>
+            </contact>
+            <contact localId="8">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="7" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_BusDS_Closed</variable>
+            </contact>
+            <contact localId="9">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="8" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_LineDS_Closed</variable>
+            </contact>
+            <contact localId="10">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="9" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_GroundDS_Open</variable>
+            </contact>
+            <contact localId="11" negated="true">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="10" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_Lockout86</variable>
+            </contact>
+            <coil localId="12">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="11" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Perm_CB_Close</variable>
+            </coil>
+            <comment localId="15" height="0" width="0">
+              <position x="0" y="0" />
+              <content>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Close output: valid permissive and close request. Open request always inhibits close.</xhtml>
+              </content>
+            </comment>
+            <vendorElement localId="14">
+              <position x="0" y="0" />
+              <alternativeText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </alternativeText>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                  <ElementType xmlns="">networktitle</ElementType>
+                </data>
+              </addData>
+            </vendorElement>
+            <contact localId="16">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="0" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Perm_CB_Close</variable>
+            </contact>
+            <contact localId="17">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="16" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Cmd_CB_Close</variable>
+            </contact>
+            <contact localId="18" negated="true">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="17" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Cmd_CB_Open</variable>
+            </contact>
+            <coil localId="19">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="18" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Out_CB_Close</variable>
+            </coil>
+            <comment localId="22" height="0" width="0">
+              <position x="0" y="0" />
+              <content>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Remote open output: DC healthy and breaker not already open. Close-only interlocks do not block opening.</xhtml>
+              </content>
+            </comment>
+            <vendorElement localId="21">
+              <position x="0" y="0" />
+              <alternativeText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </alternativeText>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                  <ElementType xmlns="">networktitle</ElementType>
+                </data>
+              </addData>
+            </vendorElement>
+            <contact localId="23">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="0" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Mode_Remote</variable>
+            </contact>
+            <contact localId="24">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="23" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_DC_Healthy</variable>
+            </contact>
+            <contact localId="25">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="24" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Cmd_CB_Open</variable>
+            </contact>
+            <contact localId="26" negated="true">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="25" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Sts_CB_Open</variable>
+            </contact>
+            <coil localId="27">
+              <position x="0" y="0" />
+              <connectionPointIn>
+                <connection refLocalId="26" />
+              </connectionPointIn>
+              <connectionPointOut />
+              <variable>Out_CB_Open</variable>
+            </coil>
+            <rightPowerRail localId="2147483647">
+              <position x="0" y="0" />
+              <connectionPointIn />
+            </rightPowerRail>
+          </LD>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+            <InterfaceAsPlainText>
+              <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM PLC_PRG
+VAR
+
+
+
+    {attribute 'symbol' := 'readwrite'}
+    Mode_Remote             : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_DC_Healthy          : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_Protection_Healthy  : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_CB_Open             : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_BusDS_Closed        : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_LineDS_Closed       : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_GroundDS_Open       : BOOL := TRUE;
+    {attribute 'symbol' := 'readwrite'}
+    Sts_Lockout86           : BOOL := FALSE;
+
+    {attribute 'symbol' := 'read'}
+    Perm_CB_Close           : BOOL := FALSE;
+    {attribute 'symbol' := 'read'}
+    Out_CB_Close            : BOOL := FALSE;
+    {attribute 'symbol' := 'read'}
+    Out_CB_Open             : BOOL := FALSE;
+END_VAR
+VAR_INPUT
+    {attribute 'symbol' := 'readwrite'}
+	Cmd_CB_Close            : BOOL := FALSE;
+    {attribute 'symbol' := 'readwrite'}
+    Cmd_CB_Open             : BOOL := FALSE;
+END_VAR
+</xhtml>
+            </InterfaceAsPlainText>
+          </data>
+        </addData>
+      </pou>
+      <pou name="Heartbeat" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Counter">
+              <type>
+                <UDINT />
+              </type>
+              <initialValue>
+                <simpleValue value="0" />
+              </initialValue>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                  <Attributes>
+                    <Attribute Name="symbol" Value="read" />
+                  </Attributes>
+                </data>
+              </addData>
+            </variable>
+            <variable name="PulseTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="CommandTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+                <InterfaceAsPlainText>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM Heartbeat
+VAR
+    {attribute 'symbol' := 'read'}
+    Counter : UDINT := 0;
+    PulseTimer : TON;
+    CommandTimer : TON;
+END_VAR
+</xhtml>
+                </InterfaceAsPlainText>
+              </data>
+            </addData>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">// Called after PLC_PRG in the same MainTask.
+// Increment every ~500 ms. Explicit wrap avoids overflow exceptions.
+PulseTimer(IN := NOT PulseTimer.Q, PT := T#500ms);
+IF PulseTimer.Q THEN
+    IF Counter &gt;= UDINT#4294967295 THEN
+        Counter := 0;
+    ELSE
+        Counter := Counter + 1;
+    END_IF;
+END_IF;
+
+// Lab HMI command duration guard. This POU runs after PLC_PRG.
+// Independent of browser/Gateway cleanup; outputs recompute next 20 ms scan.
+CommandTimer(IN := PLC_PRG.Cmd_CB_Open OR PLC_PRG.Cmd_CB_Close, PT := T#7s);
+IF CommandTimer.Q THEN
+    PLC_PRG.Cmd_CB_Open := FALSE;
+    PLC_PRG.Cmd_CB_Close := FALSE;
+END_IF;
+</xhtml>
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+            <InterfaceAsPlainText>
+              <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM Heartbeat
+VAR
+    {attribute 'symbol' := 'read'}
+    Counter : UDINT := 0;
+    PulseTimer : TON;
+    CommandTimer : TON;
+END_VAR
+</xhtml>
+            </InterfaceAsPlainText>
+          </data>
+        </addData>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

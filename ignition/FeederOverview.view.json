@@ -1,0 +1,845 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 800,
+      "height": 1040
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "version": 0,
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed"
+    },
+    "children": [
+      {
+        "type": "ia.container.coord",
+        "version": 0,
+        "props": {
+          "style": {
+            "backgroundColor": "#ffffff"
+          }
+        },
+        "meta": {
+          "name": "FeederStatus"
+        },
+        "position": {
+          "x": 0,
+          "y": 60,
+          "width": 712,
+          "height": 610
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "FEEDER 01  |  OPERATOR OVERVIEW",
+              "style": {
+                "fontSize": 24,
+                "color": "#152536",
+                "backgroundColor": "#dbeafe",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "x": 16,
+              "y": 12,
+              "width": 680,
+              "height": 40
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "SOFTWARE PLC LAB  /  SUPERVISORY CONTROL  /  SIMULATED FEEDBACK",
+              "style": {
+                "fontSize": 12,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Scope"
+            },
+            "position": {
+              "x": 16,
+              "y": 57,
+              "width": 680,
+              "height": 28
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "CHECKING TAG QUALITY",
+              "style": {
+                "fontSize": 16,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "DataQuality"
+            },
+            "position": {
+              "x": 16,
+              "y": 93,
+              "width": 680,
+              "height": 34
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_CB_Open}) && isGood({[default]Feeder01/Perm_CB_Close}) && isGood({[default]Feeder01/Mode_Remote}) && isGood({[default]Feeder01/Sts_DC_Healthy}) && isGood({[default]Feeder01/Sts_Protection_Healthy}) && isGood({[default]Feeder01/Sts_Lockout86}) && isGood({[default]Feeder01/Sts_BusDS_Closed}) && isGood({[default]Feeder01/Sts_LineDS_Closed}) && isGood({[default]Feeder01/Sts_GroundDS_Open}) && isGood({[default]Feeder01/Cmd_CB_Close}) && isGood({[default]Feeder01/Cmd_CB_Open}) && isGood({[default]Feeder01/Out_CB_Close}) && isGood({[default]Feeder01/Out_CB_Open}), \"DATA QUALITY: ALL 13 TAGS GOOD\", \"DATA QUALITY: DEGRADED / CHECK UNKNOWN SIGNALS\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_CB_Open"
+            },
+            "position": {
+              "x": 16,
+              "y": 139,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_CB_Open}), \"Breaker feedback:  \" + if({[default]Feeder01/Sts_CB_Open}, \"OPEN INDICATED\", \"NOT OPEN / UNCONFIRMED\"), \"Breaker feedback:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Perm_CB_Close"
+            },
+            "position": {
+              "x": 16,
+              "y": 169,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Perm_CB_Close}), \"Close permissive:  \" + if({[default]Feeder01/Perm_CB_Close}, \"ALLOWED\", \"BLOCKED\"), \"Close permissive:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Mode_Remote"
+            },
+            "position": {
+              "x": 16,
+              "y": 199,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Mode_Remote}), \"Control mode:  \" + if({[default]Feeder01/Mode_Remote}, \"REMOTE\", \"LOCAL\"), \"Control mode:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_DC_Healthy"
+            },
+            "position": {
+              "x": 16,
+              "y": 229,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_DC_Healthy}), \"DC supply:  \" + if({[default]Feeder01/Sts_DC_Healthy}, \"HEALTHY\", \"NOT HEALTHY\"), \"DC supply:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_Protection_Healthy"
+            },
+            "position": {
+              "x": 16,
+              "y": 259,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_Protection_Healthy}), \"Protection:  \" + if({[default]Feeder01/Sts_Protection_Healthy}, \"HEALTHY\", \"NOT HEALTHY\"), \"Protection:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_Lockout86"
+            },
+            "position": {
+              "x": 16,
+              "y": 289,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_Lockout86}), \"Lockout 86:  \" + if({[default]Feeder01/Sts_Lockout86}, \"ACTIVE\", \"CLEAR\"), \"Lockout 86:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_BusDS_Closed"
+            },
+            "position": {
+              "x": 16,
+              "y": 319,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_BusDS_Closed}), \"Bus disconnect:  \" + if({[default]Feeder01/Sts_BusDS_Closed}, \"CLOSED INDICATED\", \"NOT CLOSED\"), \"Bus disconnect:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_LineDS_Closed"
+            },
+            "position": {
+              "x": 16,
+              "y": 349,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_LineDS_Closed}), \"Line disconnect:  \" + if({[default]Feeder01/Sts_LineDS_Closed}, \"CLOSED INDICATED\", \"NOT CLOSED\"), \"Line disconnect:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Sts_GroundDS_Open"
+            },
+            "position": {
+              "x": 16,
+              "y": 379,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Sts_GroundDS_Open}), \"Ground disconnect:  \" + if({[default]Feeder01/Sts_GroundDS_Open}, \"OPEN INDICATED\", \"NOT OPEN\"), \"Ground disconnect:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Cmd_CB_Close"
+            },
+            "position": {
+              "x": 16,
+              "y": 409,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Cmd_CB_Close}), \"Close request:  \" + if({[default]Feeder01/Cmd_CB_Close}, \"ON\", \"OFF\"), \"Close request:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Cmd_CB_Open"
+            },
+            "position": {
+              "x": 16,
+              "y": 439,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Cmd_CB_Open}), \"Open request:  \" + if({[default]Feeder01/Cmd_CB_Open}, \"ON\", \"OFF\"), \"Open request:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Out_CB_Close"
+            },
+            "position": {
+              "x": 16,
+              "y": 469,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Out_CB_Close}), \"Close output:  \" + if({[default]Feeder01/Out_CB_Close}, \"ON\", \"OFF\"), \"Close output:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "UNKNOWN",
+              "style": {
+                "fontSize": 14,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "Out_CB_Open"
+            },
+            "position": {
+              "x": 16,
+              "y": 499,
+              "width": 680,
+              "height": 27
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "config": {
+                    "expression": "forceQuality(if(isGood({[default]Feeder01/Out_CB_Open}), \"Open output:  \" + if({[default]Feeder01/Out_CB_Open}, \"ON\", \"OFF\"), \"Open output:  UNKNOWN\"))"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "Open feedback FALSE does not independently prove CLOSED.",
+              "style": {
+                "fontSize": 12,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "FeedbackNote"
+            },
+            "position": {
+              "x": 16,
+              "y": 541,
+              "width": 680,
+              "height": 25
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "An output is a command. Feedback reports breaker position.",
+              "style": {
+                "fontSize": 12,
+                "color": "#152536",
+                "backgroundColor": "#f1f5f9",
+                "paddingLeft": 12,
+                "borderRadius": 4
+              }
+            },
+            "meta": {
+              "name": "CommandNote"
+            },
+            "position": {
+              "x": 16,
+              "y": 571,
+              "width": 680,
+              "height": 25
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "PLC HEARTBEAT",
+          "style": {
+            "fontSize": 18,
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "PLCHeartbeat"
+        },
+        "position": {
+          "x": 16,
+          "y": 8,
+          "width": 680,
+          "height": 44
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]FeederDiagnostics/State}), \"PLC HEARTBEAT: \" + {[default]FeederDiagnostics/State}, \"PLC HEARTBEAT: UNAVAILABLE\"))"
+              }
+            }
+          },
+          "props.style.backgroundColor": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]FeederDiagnostics/State}) && {[default]FeederDiagnostics/State} = \"ACTIVE\", \"#dcfce7\", \"#fee2e2\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "OPEN FEEDBACK MONITOR",
+          "style": {
+            "fontSize": 18,
+            "paddingLeft": 12,
+            "borderRadius": 4
+          }
+        },
+        "meta": {
+          "name": "OpenFeedbackAlarm"
+        },
+        "position": {
+          "x": 16,
+          "y": 676,
+          "width": 680,
+          "height": 44
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}) && isGood({[default]FeederDiagnostics/State}) && {[default]FeederDiagnostics/State} = \"ACTIVE\" && isGood({[default]Feeder01/Out_CB_Open}) && isGood({[default]Feeder01/Sts_CB_Open}), if({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}, \"ALARM: OPEN FEEDBACK MISSING\", if({[default]FeederMonitoring/OpenPending}, \"OPEN FEEDBACK: WAITING (5 s delay)\", \"OPEN FEEDBACK: NO ACTIVE ALARM\")), \"OPEN FEEDBACK: MONITORING UNAVAILABLE\"))"
+              }
+            }
+          },
+          "props.style.backgroundColor": {
+            "binding": {
+              "type": "expr",
+              "config": {
+                "expression": "forceQuality(if(isGood({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}) && isGood({[default]FeederDiagnostics/State}) && {[default]FeederDiagnostics/State} = \"ACTIVE\" && isGood({[default]Feeder01/Out_CB_Open}) && isGood({[default]Feeder01/Sts_CB_Open}), if({[default]FeederMonitoring/OpenPending/Alarms/OpenFeedbackMissing.IsActive}, \"#fee2e2\", \"#e2e8f0\"), \"#fef3c7\"))"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "version": 0,
+        "props": {
+          "text": "Lab alarm: sustained open output without open feedback. No active alarm does not confirm position.",
+          "style": {
+            "fontSize": 12,
+            "paddingLeft": 12
+          }
+        },
+        "meta": {
+          "name": "AlarmScope"
+        },
+        "position": {
+          "x": 16,
+          "y": 726,
+          "width": 680,
+          "height": 48
+        }
+      },
+      {
+        "type": "ia.container.coord",
+        "version": 0,
+        "meta": {
+          "name": "BreakerControls"
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#e2e8f0",
+            "borderRadius": 6
+          }
+        },
+        "custom": {
+          "result": "Ready. Commands require a signed-in session."
+        },
+        "position": {
+          "x": 16,
+          "y": 790,
+          "width": 680,
+          "height": 220
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "meta": {
+              "name": "Heading"
+            },
+            "props": {
+              "text": "LAB BREAKER CONTROLS",
+              "style": {
+                "fontSize": 15
+              }
+            },
+            "position": {
+              "x": 12,
+              "y": 8,
+              "width": 650,
+              "height": 34
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "version": 0,
+            "meta": {
+              "name": "OpenButton"
+            },
+            "custom": {
+              "command": "Open"
+            },
+            "props": {
+              "text": "Request OPEN"
+            },
+            "position": {
+              "x": 12,
+              "y": 48,
+              "width": 200,
+              "height": 44
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "    # Perspective onActionPerformed body; build_controls.py indents this file.\n    # LAB ONLY. No physical breaker I/O is connected.\n    from java.util.concurrent.locks import ReentrantLock\n    import time\n\n    panel = self.parent\n    action = self.custom.command\n    if action not in ('Open', 'Close'):\n        return\n    if not self.session.props.auth.authenticated:\n        panel.custom.result = 'Sign in before issuing a command.'\n        return\n\n    # Gateway-wide serialization, shared by both buttons and all sessions.\n    lock = system.util.getGlobals().setdefault('FeederLab.CommandLock', ReentrantLock())\n    if not lock.tryLock():\n        panel.custom.result = 'Another command is active. Wait for it to finish.'\n        return\n    server = 'CODESYS_Local'\n    prefix = 'nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.'\n    node = prefix + 'Cmd_CB_' + action\n    started = False\n    try:\n        names = ['Cmd_CB_Open', 'Cmd_CB_Close', 'Mode_Remote', 'Sts_DC_Healthy',\n                 'Sts_CB_Open', 'Perm_CB_Close']\n        values = system.tag.readBlocking(['[default]Feeder01/' + n for n in names] +\n                                        ['[default]FeederDiagnostics/State'])\n        if not all(q.quality.isGood() for q in values) or str(values[-1].value) != 'ACTIVE':\n            panel.custom.result = 'Command blocked: PLC monitoring unavailable.'\n            return\n        state = dict(zip(names, [bool(q.value) for q in values[:-1]]))\n        if state['Cmd_CB_Open'] or state['Cmd_CB_Close']:\n            panel.custom.result = 'Command blocked: an existing request is active.'\n            return\n        allowed = state['Perm_CB_Close'] if action == 'Close' else (\n            state['Mode_Remote'] and state['Sts_DC_Healthy'] and not state['Sts_CB_Open'])\n        if not allowed:\n            panel.custom.result = action + ' blocked by PLC conditions.'\n            return\n        # Set before attempting the write so an uncertain write is still cleaned up.\n        started = True\n        quality = system.opc.writeValue(server, node, True)\n        if not quality.isGood():\n            raise Exception('PLC command write failed: ' + str(quality))\n        panel.custom.result = action + ' requested. Waiting for indication; request clears within 6 s.'\n        # This Gateway event continues if the browser disconnects. PLC has a 7 s cap.\n        time.sleep(6.0)\n        panel.custom.result = action + ' request ended. Check the breaker indication.'\n    except Exception as exc:\n        panel.custom.result = 'Command error: ' + str(exc)\n        system.util.getLogger('FeederLabCommands').error(str(exc))\n    finally:\n        try:\n            if started:\n                quality = system.opc.writeValue(server, node, False)\n                if not quality.isGood():\n                    panel.custom.result = 'Command reset not confirmed. PLC timeout is the fallback.'\n        finally:\n            lock.unlock()\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.input.button",
+            "version": 0,
+            "meta": {
+              "name": "CloseButton"
+            },
+            "custom": {
+              "command": "Close"
+            },
+            "props": {
+              "text": "Request CLOSE"
+            },
+            "position": {
+              "x": 232,
+              "y": 48,
+              "width": 200,
+              "height": 44
+            },
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "type": "script",
+                  "scope": "G",
+                  "config": {
+                    "script": "    # Perspective onActionPerformed body; build_controls.py indents this file.\n    # LAB ONLY. No physical breaker I/O is connected.\n    from java.util.concurrent.locks import ReentrantLock\n    import time\n\n    panel = self.parent\n    action = self.custom.command\n    if action not in ('Open', 'Close'):\n        return\n    if not self.session.props.auth.authenticated:\n        panel.custom.result = 'Sign in before issuing a command.'\n        return\n\n    # Gateway-wide serialization, shared by both buttons and all sessions.\n    lock = system.util.getGlobals().setdefault('FeederLab.CommandLock', ReentrantLock())\n    if not lock.tryLock():\n        panel.custom.result = 'Another command is active. Wait for it to finish.'\n        return\n    server = 'CODESYS_Local'\n    prefix = 'nsu=CODESYSSPV3/3S/IecVarAccess;s=|var|CODESYS Control Win V3 x64.Application.PLC_PRG.'\n    node = prefix + 'Cmd_CB_' + action\n    started = False\n    try:\n        names = ['Cmd_CB_Open', 'Cmd_CB_Close', 'Mode_Remote', 'Sts_DC_Healthy',\n                 'Sts_CB_Open', 'Perm_CB_Close']\n        values = system.tag.readBlocking(['[default]Feeder01/' + n for n in names] +\n                                        ['[default]FeederDiagnostics/State'])\n        if not all(q.quality.isGood() for q in values) or str(values[-1].value) != 'ACTIVE':\n            panel.custom.result = 'Command blocked: PLC monitoring unavailable.'\n            return\n        state = dict(zip(names, [bool(q.value) for q in values[:-1]]))\n        if state['Cmd_CB_Open'] or state['Cmd_CB_Close']:\n            panel.custom.result = 'Command blocked: an existing request is active.'\n            return\n        allowed = state['Perm_CB_Close'] if action == 'Close' else (\n            state['Mode_Remote'] and state['Sts_DC_Healthy'] and not state['Sts_CB_Open'])\n        if not allowed:\n            panel.custom.result = action + ' blocked by PLC conditions.'\n            return\n        # Set before attempting the write so an uncertain write is still cleaned up.\n        started = True\n        quality = system.opc.writeValue(server, node, True)\n        if not quality.isGood():\n            raise Exception('PLC command write failed: ' + str(quality))\n        panel.custom.result = action + ' requested. Waiting for indication; request clears within 6 s.'\n        # This Gateway event continues if the browser disconnects. PLC has a 7 s cap.\n        time.sleep(6.0)\n        panel.custom.result = action + ' request ended. Check the breaker indication.'\n    except Exception as exc:\n        panel.custom.result = 'Command error: ' + str(exc)\n        system.util.getLogger('FeederLabCommands').error(str(exc))\n    finally:\n        try:\n            if started:\n                quality = system.opc.writeValue(server, node, False)\n                if not quality.isGood():\n                    panel.custom.result = 'Command reset not confirmed. PLC timeout is the fallback.'\n        finally:\n            lock.unlock()\n"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "meta": {
+              "name": "Result"
+            },
+            "props": {
+              "text": "Ready. Sign in to issue commands.",
+              "style": {
+                "fontSize": 15
+              }
+            },
+            "position": {
+              "x": 12,
+              "y": 104,
+              "width": 650,
+              "height": 50
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "property",
+                  "config": {
+                    "path": "parent.custom.result"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "meta": {
+              "name": "Scope"
+            },
+            "props": {
+              "text": "Simulation only. Requests expire; feedback is manually simulated.",
+              "style": {
+                "fontSize": 15
+              }
+            },
+            "position": {
+              "x": 12,
+              "y": 162,
+              "width": 650,
+              "height": 40
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

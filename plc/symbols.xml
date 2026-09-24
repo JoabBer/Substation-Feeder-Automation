@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.14.0</Version>
+    <SymbolConfigObject version="4.8.0.0" runtimeid="3.5.22.30" libversion="4.6.0.0" compiler="3.5.22.30" lmm="3.5.22.30" profile="CODESYS V3.5 SP22 Patch 3+" settings="SupportOPCUA, XmlIncludeComments, LayoutCalculator=CompatibilityClientSideLayoutCalculator" />
+    <ProjectInfo name="Substation_Feeder_Automation_Controls" devicename="Device" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_UDINT" size="4" swapsize="4" typeclass="UDInt" iecname="UDINT" />
+  </TypeList>
+  <NodeList>
+    <Node name="Application">
+      <Node name="Heartbeat">
+        <Node name="Counter" type="T_UDINT" access="Read" />
+      </Node>
+      <Node name="PLC_PRG">
+        <Node name="Cmd_CB_Close" type="T_BOOL" access="ReadWrite" />
+        <Node name="Cmd_CB_Open" type="T_BOOL" access="ReadWrite" />
+        <Node name="Mode_Remote" type="T_BOOL" access="ReadWrite" />
+        <Node name="Out_CB_Close" type="T_BOOL" access="Read" />
+        <Node name="Out_CB_Open" type="T_BOOL" access="Read" />
+        <Node name="Perm_CB_Close" type="T_BOOL" access="Read" />
+        <Node name="Sts_BusDS_Closed" type="T_BOOL" access="ReadWrite" />
+        <Node name="Sts_CB_Open" type="T_BOOL" access="ReadWrite" />
+        <Node name="Sts_DC_Healthy" type="T_BOOL" access="ReadWrite" />
+        <Node name="Sts_GroundDS_Open" type="T_BOOL" access="ReadWrite" />
+        <Node name="Sts_LineDS_Closed" type="T_BOOL" access="ReadWrite" />
+        <Node name="Sts_Lockout86" type="T_BOOL" access="ReadWrite" />
+        <Node name="Sts_Protection_Healthy" type="T_BOOL" access="ReadWrite" />
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>

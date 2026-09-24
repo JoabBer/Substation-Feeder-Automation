@@ -1,0 +1,34 @@
+# Local runtime, user state, certificates and temporary build work
+.plc-build/
+.build-hydro/
+.chart-data-*/
+tmp/
+output/
+__pycache__/
+*.pyc
+*.opt
+*.precompilecache
+*.~u
+*.bootinfo
+*.bootinfo_guids
+*.compileinfo
+*.Device.Application.xml
+# Keep real telemetry and machine-specific operational logs local
+analytics/live/
+analytics/output/
+*.log
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+# Native engineering files and chronological machine setup notes stay local.
+*.project
+docs/Designer-progress.md
+docs/Ignition-setup.md
+docs/Live-OPC-verification.md
+docs/Ignition-acceptance.md
+docs/PLC-project-guide.md
+docs/FeederOverview-designer.jpg
+ignition/FeederMonitoring.tags.json
+ignition/heartbeat-browse.json

@@ -1,0 +1,41 @@
+[
+  {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+      "text": "PLC HEARTBEAT",
+      "style": {
+        "fontSize": 18,
+        "paddingLeft": 12,
+        "borderRadius": 4
+      }
+    },
+    "meta": {
+      "name": "PLCHeartbeat"
+    },
+    "position": {
+      "x": 16,
+      "y": 8,
+      "width": 680,
+      "height": 44
+    },
+    "propConfig": {
+      "props.text": {
+        "binding": {
+          "type": "expr",
+          "config": {
+            "expression": "forceQuality(if(isGood({[default]FeederDiagnostics/State}), \"PLC HEARTBEAT: \" + {[default]FeederDiagnostics/State}, \"PLC HEARTBEAT: UNAVAILABLE\"))"
+          }
+        }
+      },
+      "props.style.backgroundColor": {
+        "binding": {
+          "type": "expr",
+          "config": {
+            "expression": "forceQuality(if(isGood({[default]FeederDiagnostics/State}) && {[default]FeederDiagnostics/State} = \"ACTIVE\", \"#dcfce7\", \"#fee2e2\"))"
+          }
+        }
+      }
+    }
+  }
+]
