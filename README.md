@@ -35,9 +35,9 @@ both commands and outputs off after live acceptance testing.
 
 ### CODESYS ladder logic
 
-Actual online CODESYS view showing the close and open command rungs in RUN.
+CODESYS ladder logic showing the close permissive and the close and open command rungs.
 
-![CODESYS online breaker command ladder logic](docs/images/ladder-logic.jpg)
+![CODESYS breaker permissive and command ladder logic](docs/images/ladder-logic.png)
 
 ### Live SQL analytics
 
