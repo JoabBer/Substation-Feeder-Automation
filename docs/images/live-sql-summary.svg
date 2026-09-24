@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Live SQL analytics summary</title>
+<desc id="desc">Generated figure from recorded software PLC observations, not an application screenshot.</desc>
+<rect width="1200" height="720" fill="#102033"/>
+<g font-family="Arial, sans-serif" fill="#edf4ff">
+<text x="40" y="60" font-size="34" fill="#edf4ff">LIVE SQL ANALYTICS</text>
+<text x="40" y="96" font-size="19" fill="#a9c6e5">Software PLC lab • Generated summary figure • Manually simulated feedback</text>
+<text x="40" y="131" font-size="17" fill="#edf4ff">Latest observation: 2026-09-24 16:40:36 UTC</text>
+<rect x="40" y="166" width="265" height="120" rx="9" fill="#22364c"/>
+<text x="58" y="219" font-size="36" fill="#edf4ff">8,252</text>
+<text x="58" y="257" font-size="17" fill="#edf4ff">Snapshots</text>
+<rect x="325" y="166" width="265" height="120" rx="9" fill="#22364c"/>
+<text x="343" y="219" font-size="36" fill="#edf4ff">2</text>
+<text x="343" y="257" font-size="17" fill="#edf4ff">Close requests observed</text>
+<rect x="610" y="166" width="265" height="120" rx="9" fill="#22364c"/>
+<text x="628" y="219" font-size="36" fill="#edf4ff">2</text>
+<text x="628" y="257" font-size="17" fill="#edf4ff">Open requests observed</text>
+<rect x="895" y="166" width="265" height="120" rx="9" fill="#22364c"/>
+<text x="913" y="219" font-size="36" fill="#edf4ff">2</text>
+<text x="913" y="257" font-size="17" fill="#edf4ff">Alarm activations observed</text>
+<text x="40" y="338" font-size="25" fill="#edf4ff">Data quality and recording coverage</text>
+<text x="40" y="384" font-size="19" fill="#a9c6e5">Heartbeat sample counts</text>
+<text x="420" y="384" font-size="19" fill="#edf4ff">ACTIVE: 8233, UNAVAILABLE: 16, WAITING: 3</text>
+<text x="40" y="424" font-size="19" fill="#a9c6e5">Samples with bad quality</text>
+<text x="420" y="424" font-size="19" fill="#edf4ff">16</text>
+<text x="40" y="464" font-size="19" fill="#a9c6e5">Recorded acquisition gaps</text>
+<text x="420" y="464" font-size="19" fill="#edf4ff">10</text>
+<text x="40" y="504" font-size="19" fill="#a9c6e5">Rejected records</text>
+<text x="420" y="504" font-size="19" fill="#edf4ff">0</text>
+<text x="40" y="579" font-size="19" fill="#edf4ff">Counts represent observed transitions, not guaranteed operation totals.</text>
+<text x="40" y="610" font-size="19" fill="#edf4ff">One-second sampling may miss short pulses; historical gaps are preserved.</text>
+<text x="40" y="641" font-size="19" fill="#edf4ff">A false open indication does not confirm closed. No mechanical travel time is inferred.</text>
+<text x="40" y="688" font-size="15" fill="#a9c6e5">Generated: 2026-09-24 16:40:37 UTC • Source: Python report of LIVE SQLite records</text>
+</g></svg>

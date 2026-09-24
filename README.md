@@ -16,6 +16,40 @@ flowchart LR
 Start with [reproduction instructions](docs/SETUP.md). PLC source is distributed
 as an editable PLCopen XML export, and the HMI as JSON view/component definitions.
 
+## Screenshots and analytics preview
+
+### Ignition operator overview
+
+Live heartbeat, signal quality, permissives, and manually simulated breaker status.
+The captured deployed screen retains its original “READ ONLY” subtitle; the
+status rows are read-only, while the command panel below issues authenticated requests.
+
+![Ignition operator overview with active PLC heartbeat](docs/images/hmi-overview.png)
+
+### HMI command controls
+
+Open/Close request buttons and the missing-feedback alarm display, captured with
+both commands and outputs off after live acceptance testing.
+
+![Ignition Open and Close controls](docs/images/hmi-controls.png)
+
+### CODESYS ladder logic
+
+Actual online CODESYS view showing the close and open command rungs in RUN.
+
+![CODESYS online breaker command ladder logic](docs/images/ladder-logic.jpg)
+
+### Live SQL analytics
+
+This is a **generated summary figure**, not a browser screenshot. Values come
+from the same LIVE SQLite report used by the analytics tools; they are a static
+snapshot, not a live feed. Historical bad-quality observations and gaps remain visible.
+
+![Generated summary of live SQL records](docs/images/live-sql-summary.svg)
+
+Regenerate with `python analytics/live_report.py` followed by
+`python analytics/export_summary_svg.py`.
+
 ## Components
 
 - PLC: close permissives, open priority, mutually exclusive command outputs,
