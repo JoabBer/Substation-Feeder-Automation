@@ -35,7 +35,7 @@ both commands and outputs off after live acceptance testing.
 
 ### CODESYS ladder logic
 
-CODESYS ladder logic showing the close permissive and the close and open command rungs.
+Live CODESYS ladder monitoring with the software PLC in RUN. All close conditions pass: lockout is FALSE and the close permissive is TRUE. Both commands and outputs remain FALSE because no command is requested.
 
 ![CODESYS breaker permissive and command ladder logic](docs/images/ladder-logic.png)
 
